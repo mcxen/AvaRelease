@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Fragment+Mono&family=Noto+Sans+SC:wght@300..900&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="media/volcano-crater.webp" fetchpriority="high">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 <script>document.documentElement.classList.add("js");try{if(!localStorage.getItem("lang")&&!/^zh/i.test(navigator.language||""))location.replace("en/")}catch(e){}</script>
 </head>
 <body>
@@ -139,32 +139,12 @@
         <li><b>多个任务并行</b>每个文件独立成任务，队列统一调度、通知与恢复。</li>
       </ul>
     </div>
-    <div class="reveal" aria-hidden="true">
-      <div class="win dark-win">
-        <div class="titlebar"><i></i><i></i><i></i><span>视频总结 · 旅行记录.mp4</span></div>
-        <div class="win-body">
-          <aside>
-            <b>处理阶段 <em>2 / 4</em></b>
-            <ol>
-              <li class="done"><span>✓</span>语音识别</li>
-              <li class="done"><span>✓</span>抽取画面</li>
-              <li class="run"><span class="spin"></span>逐段理解</li>
-              <li><span>4</span>成文报告</li>
-            </ol>
-          </aside>
-          <section>
-            <div class="progress"><div style="width:58%"></div></div>
-            <div class="stat-row"><div><b>03:12</b><small>已处理</small></div><div><b>11</b><small>分段</small></div><div><b>58%</b><small>整体进度</small></div></div>
-            <div class="frames"><i class="d"></i><i class="d"></i><i class="d"></i><i class="r"></i><i></i><i></i></div>
-          </section>
-        </div>
-      </div>
-      <div class="queue">
-        <div><b>自动字幕</b><span class="pill ok">已完成</span><div class="progress"><div style="width:100%"></div></div></div>
-        <div><b>保留有人片段</b><span class="pill run">进行中 · 检测</span><div class="progress"><div style="width:42%"></div></div></div>
-        <div><b>自动媒体整理</b><span class="pill wait">等待你操作</span><div class="progress"><div style="width:76%"></div></div></div>
-        <div><b>批量旋转</b><span class="pill pause">已暂停</span><div class="progress"><div style="width:30%"></div></div></div>
-      </div>
+    <div class="reveal">
+      <figure class="app-shot">
+        <img src="media/app-quick-clip.webp" width="1280" height="800" loading="lazy" decoding="async" alt="快速剪辑步骤窗口：预览、时间轴、片段列表与起止点控制">
+        <figcaption>真实界面截图 · 深色皮肤 · 快速剪辑（示例素材为 CC0 视频）</figcaption>
+      </figure>
+      <ol class="step-chips" aria-label="任务步骤"><li class="on"><span>1</span>剪辑片段</li><li><span>2</span>导出设置</li><li><span>3</span>导出</li><li><span>4</span>完成</li></ol>
     </div>
   </div>
 </section>
@@ -266,7 +246,7 @@
   <p class="fine">页面航拍照片由美国地质调查局（USGS）拍摄，属公有领域。FormatFactory 名称及原产品资源归各权利人所有；本软件为独立实现。FFmpeg 等第三方组件按各自许可证提供。</p>
 </footer>
 
-<script src="site.js?v=5"></script>
-<script src="visuals.js?v=5"></script>
+<script src="site.js?v=6"></script>
+<script src="visuals.js?v=6"></script>
 </body>
 </html>
