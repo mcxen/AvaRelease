@@ -3,6 +3,7 @@
 (() => {
   const lang = document.documentElement.lang === "en" ? "en" : "zh";
   const BASE = new URL("./", (document.currentScript && document.currentScript.src) || location.href).href;
+  const mediaUrl = (name) => new URL(`media/${name}`, BASE).href;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
   const seg = (p, a, b) => clamp((p - a) / (b - a));
@@ -175,9 +176,9 @@
       },
       convert: { file: "旅行.mov", out: "旅行.mp4", wait: "等待", run: "转换中", done: "完成 ✓", saved: "体积 -83%" },
       subs: { lines: ["今天我们去了海边，天气非常好。", "先在沙滩上走了一会儿。", "下午换到老街，吃了当地的小吃。"], run: "识别中", proof: "校对 ✓", srt: "导出 .srt", burn: "烧录进视频" },
-      summary: { stages: ["语音识别", "抽取画面", "逐段理解", "成文报告"], chapters: ["出发与早餐", "海边散步", "老街与小吃", "返程与总结"], head: "章节" },
-      tags: { names: ["海边", "美食", "人物", "文档"] },
-      pdf: { merged: "合并.pdf · 4 页", rotate: "旋转", order: "排序", merge: "合并" }
+      summary: { stages: ["语音识别", "抽取画面", "逐段理解", "成文报告"], chapters: ["港口与水面", "船只穿行", "岸边建筑", "收尾画面"], head: "章节" },
+      tags: { names: ["海边", "山景", "美食", "花园"] },
+      pdf: { merged: "合并.pdf · 3 页", rotate: "旋转", order: "排序", merge: "合并" }
     },
     en: {
       tabs: { convert: "Convert", clip: "Quick clip", subs: "Subtitles", summary: "Summary", tags: "Tagging", pdf: "PDF" },
@@ -192,9 +193,9 @@
       },
       convert: { file: "trip.mov", out: "trip.mp4", wait: "Waiting", run: "Converting", done: "Done ✓", saved: "Size -83%" },
       subs: { lines: ["Today we went to the beach, and the weather was great.", "We walked along the sand for a while.", "In the afternoon we tried local snacks in the old town."], run: "Recognizing", proof: "Proofread ✓", srt: "Export .srt", burn: "Burn into video" },
-      summary: { stages: ["Speech to text", "Extract frames", "Segment analysis", "Write report"], chapters: ["Departure & breakfast", "Beach walk", "Old town snacks", "Heading home"], head: "Chapters" },
-      tags: { names: ["Beach", "Food", "People", "Docs"] },
-      pdf: { merged: "merged.pdf · 4 pages", rotate: "Rotate", order: "Reorder", merge: "Merge" }
+      summary: { stages: ["Speech to text", "Extract frames", "Segment analysis", "Write report"], chapters: ["Harbour and water", "Boats crossing", "Waterfront", "Closing shot"], head: "Chapters" },
+      tags: { names: ["Beach", "Mountains", "Food", "Garden"] },
+      pdf: { merged: "merged.pdf · 3 pages", rotate: "Rotate", order: "Reorder", merge: "Merge" }
     }
   }[lang];
 
@@ -217,10 +218,11 @@
   const SCENES = {
     convert: { T: 8, init(root) {
       const t = TXT.convert;
+      const thumb = mediaUrl("poster-water.webp");
       root.innerHTML = `
-        <div class="cv-file card"><div class="doc">MOV</div><div><b>${t.file}</b><small class="cv-size mono">1.8 GB</small></div></div>
+        <div class="cv-file card"><img class="th" src="${thumb}" alt=""><div><b>${t.file}</b><small class="cv-size mono">1.8 GB</small></div></div>
         <div class="cv-arrow mono" aria-hidden="true">====&gt;</div>
-        <div class="cv-out card"><div class="doc ok">MP4</div><div><b>${t.out}</b><small class="cv-size2 mono"></small></div><span class="cv-saved pill ok">${t.saved}</span></div>
+        <div class="cv-out card"><img class="th" src="${thumb}" alt=""><div><b>${t.out}</b><small class="cv-size2 mono"></small></div><span class="cv-saved pill ok">${t.saved}</span></div>
         <div class="cv-chips"><span class="chip on">MP4 · H.265</span><span class="chip">MKV</span><span class="chip">WEBM</span><span class="chip">GPU</span></div>
         <div class="cv-bar"><div class="mono cv-ascii"></div><div class="progress"><div></div></div><div class="cv-row"><span class="cv-state pill wait"></span><span class="mono cv-pct"></span></div></div>`;
       const q = (s) => root.querySelector(s);
@@ -383,9 +385,10 @@
     } },
 
     subs: { T: 10, init(root) {
-      const t = TXT.subs, N = 44;
+      const t = TXT.subs, N = 40;
       root.innerHTML = `
         <div class="sub-top"><span class="pill run sub-state"></span><span class="mono sub-clock">00:00</span></div>
+        <img class="sub-bg" src="${mediaUrl("poster-city.webp")}" alt="">
         <div class="wave">${"<i></i>".repeat(N)}</div>
         <div class="sub-lines">${t.lines.map((l, i) => `<div class="sub-line"><span class="mono">${clock(2 + i * 4.5 + (i > 1 ? 1.5 : 0))}</span><span class="sub-text"></span></div>`).join("")}</div>
         <div class="sub-actions"><span class="chip">${t.proof}</span><span class="chip">${t.srt}</span><span class="chip">${t.burn}</span></div>`;
@@ -396,7 +399,7 @@
         const speaking = starts.some((s) => p > s && p < s + 0.2);
         bars.forEach((b, i) => {
           const amp = speaking ? 0.35 + 0.65 * Math.abs(Math.sin(i * 0.7 + tt * 6)) * (0.6 + 0.4 * Math.sin(i * 1.9 + tt * 2.3)) : 0.1 + 0.05 * Math.sin(i + tt * 2);
-          b.style.height = `${6 + amp * 54}px`;
+          b.style.height = `${3 + amp * 26}px`;
         });
         clk.textContent = clock(p * 14);
         state.textContent = p < 0.9 ? `${t.run} ${"▮".repeat(1 + Math.floor(tt * 3) % 3)}` : t.proof;
@@ -412,10 +415,11 @@
 
     summary: { T: 10, init(root) {
       const t = TXT.summary;
+      const frames = ["sum-water-2", "sum-water-6", "sum-water-10", "sum-water-14"], times = [2, 6, 10, 14];
       root.innerHTML = `
         <div class="sm-cols">
           <ol class="sm-stages">${t.stages.map((s) => `<li><span></span>${s}</li>`).join("")}</ol>
-          <div class="sm-report"><b class="mono">${t.head}</b>${t.chapters.map((c, i) => `<div class="sm-ch"><span class="mono">${clock([0, 192, 465, 690][i])}</span>${c}</div>`).join("")}</div>
+          <div class="sm-report"><b class="mono">${t.head}</b>${t.chapters.map((c, i) => `<div class="sm-ch"><img src="${mediaUrl(frames[i] + ".webp")}" alt=""><span class="mono">${clock(times[i])}</span>${c}</div>`).join("")}</div>
         </div>
         <div class="progress sm-bar"><div></div></div>`;
       const lis = [...root.querySelectorAll(".sm-stages li")], chs = [...root.querySelectorAll(".sm-ch")], bar = root.querySelector(".sm-bar div");
@@ -436,17 +440,18 @@
     } },
 
     tags: { T: 9, init(root) {
-      const t = TXT.tags, order = [0, 1, 2, 0, 3, 1, 0, 2];
-      const tiles = order.map((g, i) => `<div class="tile" style="background:linear-gradient(135deg,hsl(${g * 70 + i * 9 + 190},45%,38%),hsl(${g * 70 + i * 9 + 220},40%,22%))"><span class="tag">${t.names[g]}</span></div>`).join("");
+      const t = TXT.tags, order = [0, 1, 2, 3, 0, 1, 2, 3];
+      const sets = [["tile-beach1", "tile-beach2"], ["tile-mount1", "tile-mount2"], ["tile-food1", "tile-food2"], ["tile-flower1", "tile-flower2"]];
+      const within = [], cnt = [0, 0, 0, 0];
+      order.forEach((g, i) => { within[i] = cnt[g]++; });
+      const tiles = order.map((g, i) => `<div class="tile" style="background-image:url('${mediaUrl(sets[g][within[i]] + ".webp")}')"><span class="tag">${t.names[g]}</span></div>`).join("");
       root.innerHTML = `${tiles}${t.names.map((n, g) => `<div class="grp mono" style="left:${6 + g * 24}%">${n}</div>`).join("")}`;
       const els = [...root.querySelectorAll(".tile")], tags = [...root.querySelectorAll(".tag")], grps = [...root.querySelectorAll(".grp")];
-      const seen = [0, 0, 0, 0];
-      const group = order.map((g) => seen[g]++);
       return (p) => {
         const m = ease(seg(p, 0.58, 0.82));
         els.forEach((e, i) => {
           const gx = 4 + (i % 4) * 24, gy = 24 + Math.floor(i / 4) * 140;
-          const tx = 6 + order[i] * 24, ty = 64 + group[i] * 44;
+          const tx = 6 + order[i] * 24, ty = 64 + within[i] * 44;
           e.style.left = `${lerp(gx, tx, m)}%`;
           e.style.top = `${lerp(gy, ty, m)}px`;
           e.style.transform = `scale(${lerp(1, 0.82, m)})`;
@@ -458,16 +463,18 @@
 
     pdf: { T: 9, init(root) {
       const t = TXT.pdf;
-      root.innerHTML = `${["A", "B", "C", "D"].map((l) => `<div class="pg"><b>${l}</b><i></i><i></i><i></i></div>`).join("")}
+      const pages = ["page-doc1", "page-doc2", "page-doc3"];
+      root.innerHTML = `${pages.map((n, i) => `<div class="pg" style="background-image:url('${mediaUrl(n + ".webp")}')"><b>${i + 1}</b></div>`).join("")}
         <div class="pg-label mono"></div><div class="pg-merged pill ok">${t.merged}</div>`;
       const pgs = [...root.querySelectorAll(".pg")], label = root.querySelector(".pg-label"), merged = root.querySelector(".pg-merged");
-      const slotX = (s) => 7 + s * 23.5;
+      const slotX = (s) => 6 + s * 31;
       return (p) => {
         const sw = ease(seg(p, 0.12, 0.3)), rot = ease(seg(p, 0.38, 0.52)), mg = ease(seg(p, 0.64, 0.86));
-        const slot = [0, lerp(1, 2, sw), lerp(2, 1, sw), 3];
         pgs.forEach((e, i) => {
-          const x = lerp(slotX(slot[i]), 38 + i * 1.6, mg), y = lerp(70, 70 - i * 3, mg);
-          const angle = i === 3 ? 90 * (1 - rot) : 0;
+          const target = i === 0 ? 0 : i === 1 ? lerp(1, 2, sw) : lerp(2, 1, sw);
+          const x = lerp(slotX(target), 36 + i * 1.6, mg);
+          const y = lerp(70, 70 - i * 3, mg);
+          const angle = i === 2 ? 90 * rot : 0;
           e.style.left = `${x}%`; e.style.top = `${y}px`;
           e.style.transform = `rotate(${angle}deg)`;
           e.style.zIndex = i;
