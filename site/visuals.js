@@ -163,17 +163,16 @@
   const TXT = {
     zh: {
       tabs: { convert: "格式转换", clip: "快速剪辑", subs: "自动字幕", summary: "视频总结", tags: "标签整理", pdf: "PDF" },
-      title: { convert: "格式转换 · 旅行.mov", clip: "快速剪辑 · 旅行.mp4", subs: "自动字幕 · 旅行.mp4", summary: "视频总结 · 旅行.mp4", tags: "自动标签与媒体整理", pdf: "PDF 工作区" },
+      title: { convert: "格式转换 · 旅行.mov", clip: "快速剪辑 · 旅行片段.mp4", subs: "自动字幕 · 旅行.mp4", summary: "视频总结 · 旅行.mp4", tags: "自动标签与媒体整理", pdf: "PDF 工作区" },
       steps: {
         convert: ["拖入文件，选择目标格式或预设", "设置画质、码率或目标体积，可用显卡硬件转码", "加入队列，完成后对比前后体积"],
-        clip: ["拖动播放头，在要切开的位置分割", "点选要保留或删除的片段", "原格式快速复制导出，或重新编码"],
+        clip: ["拖动播放头，点“设为起点”和“设为终点”框定要保留的片段", "右侧片段列表实时显示起点、终点和时长，可新增、分割、删除片段", "点“下一步：导出选项”，选择输出格式和保存位置，再开始导出"],
         subs: ["本地语音识别，文件不离开电脑", "逐句校对时间和文字", "导出字幕文件，或烧录进视频"],
         summary: ["语音识别与画面抽帧", "按分段理解画面和语音", "生成带章节的报告，线上模型会明确提示"],
         tags: ["给图片和视频打中文标签", "按标签、语义、人物、时长分组", "复制或移动到文件夹，可撤销"],
         pdf: ["可视化选页，拖动排序", "旋转倒置的页面，拆分或合并", "导出新的 PDF，也能提取文字或压缩"]
       },
       convert: { file: "旅行.mov", out: "旅行.mp4", wait: "等待", run: "转换中", done: "完成 ✓", saved: "体积 -83%" },
-      clip: { keep: "保留", segs: "段", export: "导出", exporting: "导出中…", exported: "已导出 ✓", cut: "分割" },
       subs: { lines: ["今天我们去了海边，天气非常好。", "先在沙滩上走了一会儿。", "下午换到老街，吃了当地的小吃。"], run: "识别中", proof: "校对 ✓", srt: "导出 .srt", burn: "烧录进视频" },
       summary: { stages: ["语音识别", "抽取画面", "逐段理解", "成文报告"], chapters: ["出发与早餐", "海边散步", "老街与小吃", "返程与总结"], head: "章节" },
       tags: { names: ["海边", "美食", "人物", "文档"] },
@@ -181,23 +180,38 @@
     },
     en: {
       tabs: { convert: "Convert", clip: "Quick clip", subs: "Subtitles", summary: "Summary", tags: "Tagging", pdf: "PDF" },
-      title: { convert: "Convert · trip.mov", clip: "Quick clip · trip.mp4", subs: "Auto subtitles · trip.mp4", summary: "Video summary · trip.mp4", tags: "Auto tagging & organizing", pdf: "PDF workspace" },
+      title: { convert: "Convert · trip.mov", clip: "Quick clip · trip segment.mp4", subs: "Auto subtitles · trip.mp4", summary: "Video summary · trip.mp4", tags: "Auto tagging & organizing", pdf: "PDF workspace" },
       steps: {
         convert: ["Drop a file and pick a format or preset", "Set quality, bitrate or target size; GPU encoding when available", "Queue it and compare sizes when it finishes"],
-        clip: ["Move the playhead and split where you want", "Click segments to keep or remove them", "Export with fast stream copy, or re-encode"],
+        clip: ["Drag the playhead, then press Set start and Set end to frame the part you keep", "The segment panel shows start, end and duration live; add, split or delete segments", "Press Next: export options, pick the output format and folder, then export"],
         subs: ["Local speech recognition; files stay on your machine", "Proofread timing and text line by line", "Export a subtitle file or burn it into the video"],
         summary: ["Speech recognition and frame extraction", "Segment-by-segment analysis of picture and speech", "A chaptered report; online models are clearly flagged"],
         tags: ["Tag images and videos", "Group by tag, meaning, person or duration", "Copy or move into folders, with undo"],
         pdf: ["Pick pages visually and drag to reorder", "Rotate sideways pages, split or merge", "Export a new PDF, extract text or compress"]
       },
       convert: { file: "trip.mov", out: "trip.mp4", wait: "Waiting", run: "Converting", done: "Done ✓", saved: "Size -83%" },
-      clip: { keep: "Keep", segs: "segments", export: "Export", exporting: "Exporting…", exported: "Exported ✓", cut: "split" },
       subs: { lines: ["Today we went to the beach, and the weather was great.", "We walked along the sand for a while.", "In the afternoon we tried local snacks in the old town."], run: "Recognizing", proof: "Proofread ✓", srt: "Export .srt", burn: "Burn into video" },
       summary: { stages: ["Speech to text", "Extract frames", "Segment analysis", "Write report"], chapters: ["Departure & breakfast", "Beach walk", "Old town snacks", "Heading home"], head: "Chapters" },
       tags: { names: ["Beach", "Food", "People", "Docs"] },
       pdf: { merged: "merged.pdf · 4 pages", rotate: "Rotate", order: "Reorder", merge: "Merge" }
     }
   }[lang];
+
+  const QC = lang === "en" ? {
+    title: "Quick clip · trip segment.mp4", tabs: ["Edit", "Crop", "Auto-level"],
+    add: "Add segment", split: "Split here", setStart: "Set start", setEnd: "Set end",
+    clip: "Segments", seg: "Segment 1", startEnd: "Start / end", start: "Start", end: "End",
+    speed: "Speed", def: "Default", fade: "Fade in / out", off: "Off", crop: "Crop", none: "None", rot: "Rotation", keep: "Keep orientation",
+    play: "Play segment", preview: "Preview result", invert: "Invert: remove selected", output: "Output settings…", next: "Next: export options →",
+    prec: "Precision", count: "1 segment · total output"
+  } : {
+    title: "快速剪辑 · 旅行片段.mp4", tabs: ["剪辑", "画面裁剪", "自动转正"],
+    add: "新增片段", split: "在此分割", setStart: "设为起点", setEnd: "设为终点",
+    clip: "片段", seg: "片段 1", startEnd: "起点 / 终点", start: "起点", end: "终点",
+    speed: "速度", def: "默认", fade: "淡入 / 淡出", off: "关闭", crop: "裁剪", none: "无", rot: "旋转方向", keep: "保持原方向",
+    play: "播放片段", preview: "预览结果", invert: "反选：去除所选片段", output: "输出配置…", next: "下一步：导出选项 →",
+    prec: "精度", count: "1 个片段 · 总输出时长"
+  };
 
   const SCENES = {
     convert: { T: 8, init(root) {
@@ -232,36 +246,121 @@
       };
     } },
 
-    clip: { T: 9, init(root) {
-      const t = TXT.clip;
-      const cuts = [0.28, 0.55, 0.78], keep = [true, false, true, false], total = 90;
-      const thumbs = Array.from({ length: 30 }, (_, i) => `<i style="background:linear-gradient(135deg,hsl(${(i * 11 + 12) % 360},45%,34%),hsl(${(i * 11 + 40) % 360},40%,22%))"></i>`).join("");
-      root.innerHTML = `
-        <div class="clip-preview"><span class="mono clip-time">00:00</span></div>
-        <div class="clip-track"><div class="clip-thumbs">${thumbs}</div>
-          ${[0, 1, 2, 3].map((i) => { const a = i ? cuts[i - 1] : 0, b = i < 3 ? cuts[i] : 1; return `<div class="clip-seg" style="left:${a * 100}%;width:${(b - a) * 100}%"></div>`; }).join("")}
-          ${cuts.map((c) => `<div class="clip-cut" style="left:${c * 100}%"><span>✂</span></div>`).join("")}
-          <div class="clip-head"></div></div>
-        <div class="clip-foot"><span class="clip-count mono"></span><span class="clip-btn btn small"></span></div>`;
-      const time = root.querySelector(".clip-time"), head = root.querySelector(".clip-head"), segs = [...root.querySelectorAll(".clip-seg")];
-      const cutEls = [...root.querySelectorAll(".clip-cut")], count = root.querySelector(".clip-count"), btn = root.querySelector(".clip-btn");
-      const prev = root.querySelector(".clip-preview");
+    clip: { T: 14, init(root) {
+      const Q = QC;
+      const TOTAL = 142.35, TRACK = 548, A = 15, B = 45, E0 = 57.207;
+      const f = (s) => s / TOTAL;
+      const fmt = (s) => { const m = Math.floor(s / 60), r = s - m * 60; return `${pad(m)}:${r.toFixed(3).padStart(6, "0")}`; };
+      const lab = (s) => { const m = Math.floor(s / 60), r = Math.floor(s - m * 60); return `${m}:${String(r).padStart(2, "0")}`; };
+      const ruler = Array.from({ length: 10 }, (_, i) => `<span style="left:${(f(15 * i) * TRACK).toFixed(1)}px">${lab(15 * i)}</span>`).join("");
+      const frames = Array.from({ length: 14 }, (_, i) => `<i style="background:linear-gradient(160deg,hsl(${28 + i * 7},38%,${30 + (i % 3) * 5}%),hsl(${200 + i * 5},30%,18%))"></i>`).join("");
+      root.innerHTML = `<div class="qc-scale"><div class="qc" aria-hidden="true">
+        <div class="qc-bar">
+          <span class="qc-dots"><i></i><i></i><i></i></span>
+          <span class="qc-app"></span>
+          <span class="qc-title">${Q.title}</span>
+          <div class="qc-tabs"><span class="on">${Q.tabs[0]}</span><span>${Q.tabs[1]}</span><span>${Q.tabs[2]}</span></div>
+          <span class="qc-undo">↶ &nbsp;↷</span>
+        </div>
+        <div class="qc-preview"><div class="qc-frame"></div><span class="qc-badge"></span></div>
+        <div class="qc-transport">
+          <span class="qc-time"></span>
+          <span class="qc-ctl">⏮ &nbsp; ◀ &nbsp; <b class="qc-play">▶</b> &nbsp; ▶ &nbsp; ⏭ &nbsp; ■</span>
+          <span class="qc-prec">${Q.prec} 0.1 s</span>
+        </div>
+        <div class="qc-timeline">
+          <div class="qc-tools">
+            <span>＋ ${Q.add}</span><span>✂ ${Q.split}</span><span class="b-ss">${Q.setStart}</span><span class="b-se">${Q.setEnd}</span>
+          </div>
+          <div class="qc-ruler">${ruler}</div>
+          <div class="qc-track">
+            <div class="qc-thumbs">${frames}</div>
+            <div class="qc-mask ml"></div><div class="qc-mask mr"></div>
+            <div class="qc-seg"></div>
+            <div class="qc-head"></div>
+          </div>
+          <div class="qc-count"></div>
+        </div>
+        <aside class="qc-side">
+          <div class="qc-sidehead">${Q.clip}</div>
+          <div class="qc-card"><div class="qc-strip"><i></i><i></i></div><div class="qc-cardtxt"><b class="seg-name"></b><small class="seg-range"></small></div><span class="seg-dur"></span></div>
+          <div class="qc-sub">${Q.seg} · ${Q.startEnd}</div>
+          <div class="qc-pair">
+            <div class="qc-pthumb" style="--h:35"><em>${Q.start}</em></div>
+            <div class="qc-pthumb" style="--h:110"><em>${Q.end}</em></div>
+          </div>
+          <div class="qc-times"><span class="t-start"></span><span class="t-end"></span></div>
+          <div class="qc-rows">
+            <div><span>${Q.speed}</span><b>${Q.def}</b></div>
+            <div><span>${Q.fade}</span><b>${Q.off} · ${Q.off}</b></div>
+            <div><span>${Q.crop}</span><b>${Q.none} ›</b></div>
+            <div><span>${Q.rot}</span><b>${Q.keep}</b></div>
+          </div>
+          <div class="qc-btns"><span>▷ ${Q.play}</span><span>◉ ${Q.preview}</span></div>
+          <div class="qc-inv"><i></i>${Q.invert}</div>
+        </aside>
+        <div class="qc-foot">
+          <span class="qc-footname">${Q.seg}</span>
+          <span class="qc-out">${Q.output}</span>
+          <span class="qc-next">${Q.next}</span>
+        </div>
+        <div class="qc-ring"></div>
+        <svg class="qc-cursor" width="14" height="20" viewBox="0 0 14 20"><path d="M1 1v15l4-4 3 7 2.6-1.2-3-6.6H13z" fill="#fff" stroke="#000" stroke-width="1"/></svg>
+      </div></div>`;
+
+      const q = (s) => root.querySelector(s);
+      const scale = () => { const s = root.clientWidth / 1000; q(".qc").style.transform = `scale(${s})`; q(".qc-scale").style.height = `${640 * s}px`; };
+      scale();
+      if (root._qcObserver) root._qcObserver.disconnect();
+      root._qcObserver = new ResizeObserver(scale);
+      root._qcObserver.observe(root);
+
+      const head = q(".qc-head"), seg = q(".qc-seg"), ml = q(".ml"), mr = q(".mr"), frame = q(".qc-frame");
+      const badge = q(".qc-badge"), time = q(".qc-time"), count = q(".qc-count"), root2 = q(".qc");
+      const sName = q(".seg-name"), sRange = q(".seg-range"), sDur = q(".seg-dur"), tS = q(".t-start"), tE = q(".t-end");
+      const cursor = q(".qc-cursor"), ring = q(".qc-ring"), bSS = q(".b-ss"), bSE = q(".b-se"), next = q(".qc-next");
+      sName.textContent = Q.seg;
+      q(".qc-footname").textContent = Q.seg;
+
+      // playhead in seconds-fraction: hold, move to 15s, hold, move to 45s
+      const xPh = (p) => (p < 0.10 ? 0 : p < 0.32 ? clamp((p - 0.10) / 0.22) * f(A) : p < 0.49 ? f(A) : p < 0.72 ? f(A) + clamp((p - 0.49) / 0.23) * (f(B) - f(A)) : f(B));
+      // cursor path (x, y in scene px)
+      const KEYS = [[0, 60, 520], [0.10, 26, 523], [0.32, 26 + f(A) * TRACK, 523], [0.355, 293, 447], [0.49, 26 + f(A) * TRACK, 523], [0.72, 26 + f(B) * TRACK, 523], [0.76, 397, 447], [0.84, 397, 447], [0.86, 891, 618], [1, 891, 618]];
+      const cursorAt = (p) => {
+        for (let i = 0; i < KEYS.length - 1; i++) {
+          const [a, ax, ay] = KEYS[i], [b, bx, by] = KEYS[i + 1];
+          if (p <= b) { const t = (p - a) / (b - a || 1); return [ax + (bx - ax) * t, ay + (by - ay) * t]; }
+        }
+        return [891, 618];
+      };
+      // clicks: [start, end, x, y, button]
+      const PRESS = [[0.37, 0.39, 293, 447, bSS], [0.77, 0.79, 397, 447, bSE], [0.875, 0.895, 891, 618, next]];
+
       return (p) => {
-        const x = lerp(0.02, 0.98, seg(p, 0.05, 0.8));
-        head.style.left = `${x * 100}%`;
-        time.textContent = clock(x * total);
-        prev.style.background = `linear-gradient(${120 + x * 160}deg,hsl(${12 + x * 120},50%,30%),hsl(${40 + x * 120},45%,16%))`;
-        cutEls.forEach((c, i) => { c.style.opacity = x >= cuts[i] ? 1 : 0; });
-        let kept = 0, dur = 0;
-        segs.forEach((s, i) => {
-          const end = i < 3 ? cuts[i] : 1, start = i ? cuts[i - 1] : 0;
-          const decided = x >= end || (i === 3 && p > 0.82);
-          s.className = "clip-seg" + (decided ? (keep[i] ? " keep" : " drop") : "");
-          if (decided && keep[i]) { kept++; dur += (end - start) * total; }
-        });
-        count.textContent = `${t.keep} ${kept} ${t.segs} · ${clock(dur)}`;
-        btn.textContent = p < 0.85 ? t.export : p < 0.93 ? t.exporting : t.exported;
-        btn.classList.toggle("pulse", p >= 0.85 && p < 0.93);
+        const ph = xPh(p);
+        const startS = p >= 0.39 ? A : 0;
+        const endS = p >= 0.79 ? B : E0;
+        const op = Math.min(clamp(p / 0.05), clamp((1 - p) / 0.06));
+        root2.style.opacity = op.toFixed(3);
+        head.style.left = `${(ph * TRACK).toFixed(1)}px`;
+        seg.style.left = `${(f(startS) * TRACK).toFixed(1)}px`;
+        seg.style.width = `${((f(endS) - f(startS)) * TRACK).toFixed(1)}px`;
+        ml.style.width = `${(f(startS) * TRACK).toFixed(1)}px`;
+        mr.style.width = `${((1 - f(endS)) * TRACK).toFixed(1)}px`;
+        frame.style.background = `linear-gradient(120deg,hsl(${22 + ph * 160},46%,30%),hsl(${205 + ph * 90},34%,13%))`;
+        badge.textContent = `${Q.seg} · ${fmt(startS)} — ${fmt(endS)}`;
+        time.textContent = `${fmt(ph * TOTAL)} / 02:22.350`;
+        count.textContent = `${Q.count} ${fmt(endS - startS)}`;
+        sRange.textContent = `${fmt(startS)} — ${fmt(endS)}`;
+        sDur.textContent = `${(endS - startS).toFixed(1)} s`;
+        tS.textContent = fmt(startS);
+        tE.textContent = fmt(endS);
+        const [cx, cy] = cursorAt(p);
+        cursor.style.transform = `translate(${cx.toFixed(1)}px, ${cy.toFixed(1)}px)`;
+        let pressed = null;
+        PRESS.forEach(([a, b, x, y, el]) => { el.classList.toggle("on", p >= a && p <= b); if (p >= a && p <= b) pressed = [x, y]; });
+        if (pressed) { ring.style.opacity = "1"; ring.style.transform = `translate(${pressed[0] - 14}px, ${pressed[1] - 14}px)`; }
+        else ring.style.opacity = "0";
       };
     } },
 
