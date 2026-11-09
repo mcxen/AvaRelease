@@ -24,7 +24,7 @@ function selectSkin(tab, focus) {
     t.setAttribute("aria-selected", String(on));
     t.tabIndex = on ? 0 : -1;
   });
-  image.src = image.src.replace(/main-[a-z0-9]+\.png$/, `main-${tab.dataset.skin}.png`);
+  image.src = image.src.replace(/main-[a-z0-9]+\.webp$/, `main-${tab.dataset.skin}.webp`);
   image.alt = tab.dataset.alt;
   era.textContent = tab.dataset.era;
   caption.textContent = tab.dataset.cap;

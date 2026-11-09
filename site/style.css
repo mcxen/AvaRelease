@@ -47,7 +47,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 
 /* hero */
 .hero{position:relative;min-height:max(100vh,720px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.hero-photo{position:absolute;inset:0;z-index:-3;background:#1a1114 url("media/volcano-crater.jpg") center 60%/cover no-repeat;animation:drift 28s ease-in-out infinite alternate}
+.hero-photo{position:absolute;inset:0;z-index:-3;background:#1a1114 url("media/volcano-crater.webp") center 60%/cover no-repeat;animation:drift 28s ease-in-out infinite alternate}
 .hero-scrim{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,0) 22%,rgba(10,10,10,.4) 50%,rgba(10,10,10,.92) 100%)}
 @keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.12) translate(-1.2%,-1%)}}
 .hero-content{width:100%;max-width:1280px;margin:0 auto;padding:140px var(--gutter) 96px}
@@ -68,7 +68,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 
 /* stages */
 .stages{position:relative;padding:clamp(80px,10vw,150px) 0;overflow:hidden;isolation:isolate}
-.stages-photo{position:absolute;inset:0;z-index:-2;background:#201a18 url("media/volcano-cone.jpg") center/cover no-repeat}
+.stages-photo{position:absolute;inset:0;z-index:-2;background:#201a18 url("media/volcano-cone.webp") center/cover no-repeat}
 .stages-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.82) 45%,rgba(10,10,10,.66) 100%)}
 .stages-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,6vw,88px);align-items:center}
 .ticks{list-style:none;padding:0;margin-top:34px;display:grid;gap:20px}
@@ -141,7 +141,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 
 /* buy */
 .buy{position:relative;padding:clamp(90px,12vw,170px) 0 clamp(80px,10vw,130px);overflow:hidden;isolation:isolate}
-.buy-photo{position:absolute;inset:0;z-index:-2;background:#1a1d1f url("media/volcano-coast.jpg") center/cover no-repeat}
+.buy-photo{position:absolute;inset:0;z-index:-2;background:#1a1d1f url("media/volcano-coast.webp") center/cover no-repeat}
 .buy-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.9) 100%)}
 .card{max-width:640px;margin:0 auto;padding:clamp(30px,5vw,56px);border-radius:8px;background:rgba(14,15,18,.78);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);text-align:center}
 .card .ticks{text-align:left;max-width:460px;margin-left:auto;margin-right:auto}
