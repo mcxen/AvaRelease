@@ -381,3 +381,8 @@ footer .fine{margin-top:8px}
 .qc-cursor{position:absolute;left:0;top:0;pointer-events:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
 .qc-dots,.qc-app,.qc-title{display:none}
 .qc-tabs{left:50%;transform:translateX(-50%)}
+
+/* real footage in the clip mock */
+.qc-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.qc-thumbs{position:absolute;inset:0;background-size:100% 100%;background-repeat:no-repeat;background-color:#3a3a3c}
+.qc-pthumb{background-size:cover;background-position:center;background-color:#3a3a3c}

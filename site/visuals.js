@@ -2,6 +2,7 @@
 // Text comes from the dictionaries below; the page language is read from <html lang>.
 (() => {
   const lang = document.documentElement.lang === "en" ? "en" : "zh";
+  const BASE = new URL("./", (document.currentScript && document.currentScript.src) || location.href).href;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
   const seg = (p, a, b) => clamp((p - a) / (b - a));
@@ -248,12 +249,15 @@
 
     clip: { T: 14, init(root) {
       const Q = QC;
-      const TOTAL = 142.35, TRACK = 548, A = 15, B = 45, E0 = 57.207;
+      const TOTAL = 8, TRACK = 548, A = 2, B = 6, E0 = TOTAL;
+      const CLIPS = {
+        city: { video: "clip-city.mp4", poster: "poster-city.webp", strip: "strip-city.webp", start: "start-city.webp", end: "end-city.webp" },
+        water: { video: "clip-water.mp4", poster: "poster-water.webp", strip: "strip-water.webp", start: "start-water.webp", end: "end-water.webp" }
+      };
+      const media = (name) => new URL(`media/${name}`, BASE).href;
       const f = (s) => s / TOTAL;
       const fmt = (s) => { const m = Math.floor(s / 60), r = s - m * 60; return `${pad(m)}:${r.toFixed(3).padStart(6, "0")}`; };
-      const lab = (s) => { const m = Math.floor(s / 60), r = Math.floor(s - m * 60); return `${m}:${String(r).padStart(2, "0")}`; };
-      const ruler = Array.from({ length: 10 }, (_, i) => `<span style="left:${(f(15 * i) * TRACK).toFixed(1)}px">${lab(15 * i)}</span>`).join("");
-      const frames = Array.from({ length: 14 }, (_, i) => `<i style="background:linear-gradient(160deg,hsl(${28 + i * 7},38%,${30 + (i % 3) * 5}%),hsl(${200 + i * 5},30%,18%))"></i>`).join("");
+      const ruler = Array.from({ length: TOTAL + 1 }, (_, i) => `<span style="left:${(f(i) * TRACK).toFixed(1)}px">0:${String(i).padStart(2, "0")}</span>`).join("");
       root.innerHTML = `<div class="qc-scale"><div class="qc" aria-hidden="true">
         <div class="qc-bar">
           <span class="qc-dots"><i></i><i></i><i></i></span>
@@ -262,7 +266,7 @@
           <div class="qc-tabs"><span class="on">${Q.tabs[0]}</span><span>${Q.tabs[1]}</span><span>${Q.tabs[2]}</span></div>
           <span class="qc-undo">↶ &nbsp;↷</span>
         </div>
-        <div class="qc-preview"><div class="qc-frame"></div><span class="qc-badge"></span></div>
+        <div class="qc-preview"><video class="qc-video" muted playsinline preload="auto"></video><span class="qc-badge"></span></div>
         <div class="qc-transport">
           <span class="qc-time"></span>
           <span class="qc-ctl">⏮ &nbsp; ◀ &nbsp; <b class="qc-play">▶</b> &nbsp; ▶ &nbsp; ⏭ &nbsp; ■</span>
@@ -274,7 +278,7 @@
           </div>
           <div class="qc-ruler">${ruler}</div>
           <div class="qc-track">
-            <div class="qc-thumbs">${frames}</div>
+            <div class="qc-thumbs"></div>
             <div class="qc-mask ml"></div><div class="qc-mask mr"></div>
             <div class="qc-seg"></div>
             <div class="qc-head"></div>
@@ -286,8 +290,8 @@
           <div class="qc-card"><div class="qc-strip"><i></i><i></i></div><div class="qc-cardtxt"><b class="seg-name"></b><small class="seg-range"></small></div><span class="seg-dur"></span></div>
           <div class="qc-sub">${Q.seg} · ${Q.startEnd}</div>
           <div class="qc-pair">
-            <div class="qc-pthumb" style="--h:35"><em>${Q.start}</em></div>
-            <div class="qc-pthumb" style="--h:110"><em>${Q.end}</em></div>
+            <div class="qc-pthumb ps"><em>${Q.start}</em></div>
+            <div class="qc-pthumb pe"><em>${Q.end}</em></div>
           </div>
           <div class="qc-times"><span class="t-start"></span><span class="t-end"></span></div>
           <div class="qc-rows">
@@ -315,16 +319,30 @@
       root._qcObserver = new ResizeObserver(scale);
       root._qcObserver.observe(root);
 
-      const head = q(".qc-head"), seg = q(".qc-seg"), ml = q(".ml"), mr = q(".mr"), frame = q(".qc-frame");
+      const video = q(".qc-video"), thumbs = q(".qc-thumbs"), pS = q(".ps"), pE = q(".pe");
+      const head = q(".qc-head"), seg = q(".qc-seg"), ml = q(".ml"), mr = q(".mr");
       const badge = q(".qc-badge"), time = q(".qc-time"), count = q(".qc-count"), root2 = q(".qc");
       const sName = q(".seg-name"), sRange = q(".seg-range"), sDur = q(".seg-dur"), tS = q(".t-start"), tE = q(".t-end");
       const cursor = q(".qc-cursor"), ring = q(".qc-ring"), bSS = q(".b-ss"), bSE = q(".b-se"), next = q(".qc-next");
       sName.textContent = Q.seg;
       q(".qc-footname").textContent = Q.seg;
+      video.muted = true;
 
-      // playhead in seconds-fraction: hold, move to 15s, hold, move to 45s
+      let current = null;
+      const useClip = (key) => {
+        if (current === key) return;
+        current = key;
+        const c = CLIPS[key];
+        video.poster = media(c.poster);
+        video.src = media(c.video);
+        video.load();
+        thumbs.style.backgroundImage = `url("${media(c.strip)}")`;
+        pS.style.backgroundImage = `url("${media(c.start)}")`;
+        pE.style.backgroundImage = `url("${media(c.end)}")`;
+      };
+
+      // playhead in fractions of the clip: hold, move to A, hold, move to B
       const xPh = (p) => (p < 0.10 ? 0 : p < 0.32 ? clamp((p - 0.10) / 0.22) * f(A) : p < 0.49 ? f(A) : p < 0.72 ? f(A) + clamp((p - 0.49) / 0.23) * (f(B) - f(A)) : f(B));
-      // cursor path (x, y in scene px)
       const KEYS = [[0, 60, 520], [0.10, 26, 523], [0.32, 26 + f(A) * TRACK, 523], [0.355, 293, 447], [0.49, 26 + f(A) * TRACK, 523], [0.72, 26 + f(B) * TRACK, 523], [0.76, 397, 447], [0.84, 397, 447], [0.86, 891, 618], [1, 891, 618]];
       const cursorAt = (p) => {
         for (let i = 0; i < KEYS.length - 1; i++) {
@@ -333,11 +351,12 @@
         }
         return [891, 618];
       };
-      // clicks: [start, end, x, y, button]
       const PRESS = [[0.37, 0.39, 293, 447, bSS], [0.77, 0.79, 397, 447, bSE], [0.875, 0.895, 891, 618, next]];
 
-      return (p) => {
-        const ph = xPh(p);
+      return (p, tt) => {
+        useClip(Math.floor(tt / 14) % 2 ? "water" : "city");
+        const ph = xPh(p), at = ph * TOTAL;
+        if (video.readyState >= 1 && Math.abs(video.currentTime - at) > 0.12) video.currentTime = at;
         const startS = p >= 0.39 ? A : 0;
         const endS = p >= 0.79 ? B : E0;
         const op = Math.min(clamp(p / 0.05), clamp((1 - p) / 0.06));
@@ -347,9 +366,8 @@
         seg.style.width = `${((f(endS) - f(startS)) * TRACK).toFixed(1)}px`;
         ml.style.width = `${(f(startS) * TRACK).toFixed(1)}px`;
         mr.style.width = `${((1 - f(endS)) * TRACK).toFixed(1)}px`;
-        frame.style.background = `linear-gradient(120deg,hsl(${22 + ph * 160},46%,30%),hsl(${205 + ph * 90},34%,13%))`;
         badge.textContent = `${Q.seg} · ${fmt(startS)} — ${fmt(endS)}`;
-        time.textContent = `${fmt(ph * TOTAL)} / 02:22.350`;
+        time.textContent = `${fmt(at)} / ${fmt(TOTAL)}`;
         count.textContent = `${Q.count} ${fmt(endS - startS)}`;
         sRange.textContent = `${fmt(startS)} — ${fmt(endS)}`;
         sDur.textContent = `${(endS - startS).toFixed(1)} s`;
