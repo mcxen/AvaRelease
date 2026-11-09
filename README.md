@@ -11,3 +11,14 @@
 ## 落地页
 
 `site/` 是纯静态页面，无构建步骤。Cloudflare Pages：连接此仓库，构建命令留空，输出目录填 `site`。购买链接在 `site/site.js` 的 `BUY_URL` 中设置。
+
+## 部署（Cloudflare Pages）
+
+站点发布到 `https://ava.xpai.uk`（中文 `/`，英文 `/en/`）。Pages 项目名 `avamedia-site`，直接上传 `site/`：
+
+```bash
+# 在一个不含 wrangler.toml 的目录里运行，避免被当成 Worker 部署
+npx wrangler pages deploy <本仓库>/site --project-name avamedia-site --branch main
+```
+
+`ava` 需要一条指向 `avamedia-site.pages.dev` 的 CNAME（已代理）。

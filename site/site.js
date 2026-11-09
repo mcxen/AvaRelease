@@ -3,7 +3,7 @@ const BUY_URL = "";
 if (BUY_URL) {
   document.querySelectorAll("[data-buy]").forEach((a) => { a.href = BUY_URL; });
   const main = document.getElementById("buy-btn");
-  if (main) main.textContent = "立即购买 · US$8.99";
+  if (main) main.textContent = document.documentElement.lang === "en" ? "Buy now · US$8.99" : "立即购买 · US$8.99";
 }
 
 // Nav gets a solid background once the page scrolls past the top.
@@ -24,8 +24,8 @@ function selectSkin(tab, focus) {
     t.setAttribute("aria-selected", String(on));
     t.tabIndex = on ? 0 : -1;
   });
-  image.src = `media/main-${tab.dataset.skin}.png`;
-  image.alt = `天池万象转换${tab.textContent}皮肤主窗口`;
+  image.src = image.src.replace(/main-[a-z0-9]+\.png$/, `main-${tab.dataset.skin}.png`);
+  image.alt = tab.dataset.alt;
   era.textContent = tab.dataset.era;
   caption.textContent = tab.dataset.cap;
   panel.setAttribute("aria-labelledby", tab.id);
@@ -54,3 +54,10 @@ if ("IntersectionObserver" in window) {
 } else {
   items.forEach((el) => el.classList.add("in"));
 }
+
+// Remember an explicit language choice so the Chinese page stops redirecting English browsers.
+document.querySelectorAll("a[data-lang]").forEach((a) => {
+  a.addEventListener("click", () => {
+    try { localStorage.setItem("lang", a.dataset.lang); } catch (e) { /* storage unavailable */ }
+  });
+});

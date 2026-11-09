@@ -8,13 +8,18 @@
 <meta name="description" content="视频、音频、图片、PDF 一站处理。每个任务都是可暂停、可重试的多阶段窗口；浅色、深色、Mac OS 9、Windows XP 四套皮肤，为复古爱好者准备。一次买断 US$8.99。">
 <meta property="og:title" content="天池万象转换 · AvaMedia">
 <meta property="og:description" content="多任务步骤界面、四套复古皮肤的本地媒体工具箱。一次买断 US$8.99。">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="media/volcano-crater.jpg">
 <link rel="icon" type="image/png" href="media/app-128.png">
+<link rel="canonical" href="https://ava.xpai.uk/">
+<link rel="alternate" hreflang="zh-CN" href="https://ava.xpai.uk/">
+<link rel="alternate" hreflang="en" href="https://ava.xpai.uk/en/">
+<link rel="alternate" hreflang="x-default" href="https://ava.xpai.uk/en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Fragment+Mono&family=Noto+Sans+SC:wght@300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.classList.add("js");try{if(!localStorage.getItem("lang")&&!/^zh/i.test(navigator.language||""))location.replace("en/")}catch(e){}</script>
 </head>
 <body>
 
@@ -30,7 +35,7 @@
     <a href="#buy">定价</a>
     <a href="#feedback">反馈</a>
   </nav>
-  <a class="btn small" href="#buy" data-buy>US$8.99 买断</a>
+  <div class="nav-right"><a class="lang" href="en/" data-lang="en" hreflang="en" lang="en">EN</a><a class="btn small" href="#buy" data-buy>US$8.99 买断</a></div>
 </header>
 
 <main id="top">
@@ -113,10 +118,10 @@
     <p class="lead">Mac OS 9 Platinum 与 Windows XP Luna 各有完整的窗口、按钮、标题栏和像素字体。切换皮肤立即生效，功能保持一致。</p>
   </div>
   <div class="tabs" role="tablist" aria-label="界面皮肤">
-    <button role="tab" id="tab-dark" aria-selected="true" aria-controls="skin-panel" data-skin="dark" data-era="2020s" data-cap="深色皮肤：深灰底色与蓝色强调，适合夜间长时间使用。">深色</button>
-    <button role="tab" id="tab-light" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="light" data-era="2010s" data-cap="浅色皮肤：明亮干净的现代界面。">浅色</button>
-    <button role="tab" id="tab-macos9" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="macos9" data-era="1999" data-cap="Mac OS 9 Platinum：条纹标题栏、方角按钮与像素字体。">Mac OS 9</button>
-    <button role="tab" id="tab-winxp" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="winxp" data-era="2001" data-cap="Windows XP Luna：蓝色标题栏与圆角按钮。">Windows XP</button>
+    <button role="tab" id="tab-dark" aria-selected="true" aria-controls="skin-panel" data-skin="dark" data-alt="天池万象转换深色皮肤主窗口" data-era="2020s" data-cap="深色皮肤：深灰底色与蓝色强调，适合夜间长时间使用。">深色</button>
+    <button role="tab" id="tab-light" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="light" data-alt="天池万象转换浅色皮肤主窗口" data-era="2010s" data-cap="浅色皮肤：明亮干净的现代界面。">浅色</button>
+    <button role="tab" id="tab-macos9" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="macos9" data-alt="天池万象转换Mac OS 9皮肤主窗口" data-era="1999" data-cap="Mac OS 9 Platinum：条纹标题栏、方角按钮与像素字体。">Mac OS 9</button>
+    <button role="tab" id="tab-winxp" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="winxp" data-alt="天池万象转换Windows XP皮肤主窗口" data-era="2001" data-cap="Windows XP Luna：蓝色标题栏与圆角按钮。">Windows XP</button>
   </div>
   <div class="shot reveal" id="skin-panel" role="tabpanel" aria-labelledby="tab-dark" tabindex="0">
     <span class="era" id="skin-era">2020s</span>
