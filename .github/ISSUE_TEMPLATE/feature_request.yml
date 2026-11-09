@@ -1,0 +1,11 @@
+name: 功能建议
+description: 希望软件增加或改进的地方
+labels: [enhancement]
+body:
+  - type: textarea
+    id: goal
+    attributes: {label: 你想完成什么, description: 描述场景，而不只是想要的按钮}
+    validations: {required: true}
+  - type: textarea
+    id: idea
+    attributes: {label: 你期望的做法（可选）}
