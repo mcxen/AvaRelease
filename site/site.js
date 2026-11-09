@@ -61,3 +61,28 @@ document.querySelectorAll("a[data-lang]").forEach((a) => {
     try { localStorage.setItem("lang", a.dataset.lang); } catch (e) { /* storage unavailable */ }
   });
 });
+
+// Download buttons: resolve the latest AvaRelease assets; fall back to the release page when offline or rate limited.
+(async () => {
+  const buttons = [...document.querySelectorAll("[data-asset]")];
+  if (!buttons.length) return;
+  const patterns = { setup: /-win-x64-setup\.exe$/, portable: /-win-x64-portable\.zip$/, dmg: /-osx-arm64\.dmg$/, linux: /-linux-x64\.tar\.gz$/ };
+  try {
+    const response = await fetch("https://api.github.com/repos/mcxen/AvaRelease/releases/latest", { headers: { Accept: "application/vnd.github+json" } });
+    if (!response.ok) return;
+    const release = await response.json();
+    const assets = release.assets || [];
+    buttons.forEach((a) => {
+      const asset = assets.find((x) => patterns[a.dataset.asset]?.test(x.name) && x.browser_download_url.startsWith("https://github.com/mcxen/AvaRelease/releases/download/"));
+      if (asset) a.href = asset.browser_download_url;
+    });
+    const version = document.getElementById("dl-version");
+    if (version && release.tag_name) version.textContent = release.tag_name;
+    const mirror = document.getElementById("dl-mirror");
+    const setup = assets.find((x) => patterns.setup.test(x.name));
+    if (mirror && setup) {
+      mirror.href = "https://tvv.tw/" + setup.browser_download_url;
+      mirror.textContent = document.documentElement.lang === "en" ? "Mirror download (mainland China)" : "国内加速下载（Windows 安装版）";
+    }
+  } catch (e) { /* keep the release page links */ }
+})();

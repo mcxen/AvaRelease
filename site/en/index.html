@@ -30,9 +30,12 @@
     <span>AvaMedia</span>
   </a>
   <nav aria-label="Main">
+    <a href="#platforms">Platforms</a>
+    <a href="#demos">Demos</a>
     <a href="#stages">Task stages</a>
     <a href="#skins">Skins</a>
     <a href="#features">Features</a>
+    <a href="#download">Download</a>
     <a href="#buy">Pricing</a>
     <a href="#feedback">Feedback</a>
   </nav>
@@ -46,14 +49,15 @@
   <div class="hero-scrim"></div>
   <p class="hero-coord" aria-hidden="true">19.41°N 155.28°W<br>HALEMA‘UMA‘U CRATER</p>
   <div class="hero-content">
-    <p class="kicker">AVAMEDIA — LOCAL MEDIA TOOLBOX</p>
+    <p class="kicker">AVAMEDIA — WINDOWS · MACOS · LINUX · WEB</p>
     <h1 id="hero-title">One input,<br><em>every output.</em></h1>
-    <p class="hero-sub">Video, audio, images and PDF in a single toolbox. Every long task is split into visible stages that you can pause or retry from any step. Four skins: Light, Dark, Mac OS 9 and Windows XP.</p>
+    <p class="hero-sub">Video, audio, images and PDF in a single toolbox. It runs on Windows, macOS and Linux, and you can drive it from a browser. Every long task is split into visible stages that you can pause or retry from any step.</p>
+    <div class="plat-chips mono" aria-label="platforms"><span>Windows x64</span><span>macOS Apple Silicon</span><span>Linux x64</span><span>Browser remote</span><span>MCP</span></div>
     <div class="cta">
       <a class="btn" href="#buy" data-buy>Buy once · US$8.99</a>
       <a class="btn ghost" href="#stages">See the task window</a>
     </div>
-    <p class="fine">Windows x64 · macOS Apple Silicon · Lifetime license, no subscription · Files stay on your machine</p>
+    <p class="fine">Windows x64 · macOS Apple Silicon · Linux x64 · Lifetime license, no subscription · Files stay on your machine</p>
   </div>
   <p class="credit">PHOTO · USGS / Kīlauea, 2018 · PUBLIC DOMAIN</p>
 </section>
@@ -65,12 +69,67 @@
   <div role="listitem"><b>4</b><span>SKINS, INCL. MAC OS 9 &amp; XP</span></div>
 </div>
 
+<section id="platforms" class="platforms wrap" aria-labelledby="plat-title">
+  <div class="plat-head reveal">
+    <p class="label">01 / Every platform</p>
+    <h2 id="plat-title">Windows, macOS, Linux,<br>plus the browser and AI assistants.</h2>
+    <p class="lead">One toolbox on three desktop systems. The web interface ships inside the app, so you can control tasks from a phone or another computer. MCP lets AI assistants call convert, clip and organize directly.</p>
+  </div>
+  <div class="plat-grid">
+    <div class="ascii-stage reveal"><canvas id="ascii-volcano" aria-hidden="true"></canvas></div>
+    <ul class="plat-list"><li class="reveal"><pre class="logo" aria-hidden="true"><span class="c1">,----.</span><span class="c2">,----.</span>
+<span class="c1">|    |</span><span class="c2">|    |</span>
+<span class="c1">'----'</span><span class="c2">'----'</span>
+<span class="c3">,----.</span><span class="c4">,----.</span>
+<span class="c3">|    |</span><span class="c4">|    |</span>
+<span class="c3">'----'</span><span class="c4">'----'</span></pre><div><b>Windows</b><span>x64 · installer and portable ZIP</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true"> .---------.
+ | ^     ^ |
+ |  \___/  |
+ '---------'
+  /_______\
+ /_________\</pre><div><b>macOS</b><span>Apple Silicon · DMG · macOS 13.4+</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true">   .--.
+  |o_o |
+  |:_/ |
+ //   \ \
+(|     | )
+/'\_ _/`\</pre><div><b>Linux</b><span>x64 · self-contained tar.gz, bring your own FFmpeg</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true"> .------------.
+ |o o o  http |
+ |------------|
+ | [==] [==]  |
+ | [==] [==]  |
+ '------------'</pre><div><b>Browser remote</b><span>Web UI ships with the app, same task queue</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true"> .------------.
+ | $ mcp list |
+ | > convert  |
+ | > clip     |
+ | > summary_ |
+ '------------'</pre><div><b>MCP</b><span>A tool list for AI assistants</span></div></li></ul>
+  </div>
+  <p class="fine">Files are always processed on the computer running AvaMedia. The web UI and MCP never upload local files. The Linux build has not had a full desktop feature acceptance pass.</p>
+</section>
+
+<section id="demos" class="demos wrap" aria-labelledby="demos-title">
+  <div class="reveal">
+    <p class="label">02 / Feature demos</p>
+    <h2 id="demos-title">Watch it work.</h2>
+    <p class="lead">Six common features, step by step. The animations follow the real workflow; the numbers are examples.</p>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Feature demos" id="demo-tabs"></div>
+  <div class="demo-grid">
+    <div class="demo-info" id="demo-info" aria-live="polite"></div>
+    <div class="win demo-stage">
+      <div class="titlebar"><i></i><i></i><i></i><span id="demo-title"></span></div>
+      <div class="demo-scene" id="demo-scene" role="tabpanel" aria-label="Feature demos"></div>
+    </div>
+  </div>
+  <p class="fine">Illustrative animation with example numbers. Real speed depends on your files and computer.</p>
+</section>
+
 <section id="stages" class="stages" aria-labelledby="stages-title">
   <div class="stages-photo" aria-hidden="true"></div>
   <div class="stages-scrim" aria-hidden="true"></div>
   <div class="wrap stages-grid">
     <div class="reveal">
-      <p class="label">01 / Multi-stage task window</p>
+      <p class="label">03 / Multi-stage task window</p>
       <h2 id="stages-title">Every task shows<br>its steps.</h2>
       <p class="lead">Keep-people clips, auto subtitles, video summaries, batch rotation, auto tagging and media organizing all share one multi-stage task window.</p>
       <ul class="ticks">
@@ -113,7 +172,7 @@
 <section id="skins" class="skins wrap" aria-labelledby="skins-title">
   <div class="skins-head reveal">
     <div>
-      <p class="label">02 / Skins · for retro fans</p>
+      <p class="label">04 / Skins · for retro fans</p>
       <h2 id="skins-title">One tool,<br>four decades.</h2>
     </div>
     <p class="lead">Mac OS 9 Platinum and Windows XP Luna come with their own windows, buttons, title bars and pixel fonts. Switching is instant and every feature stays the same.</p>
@@ -135,7 +194,7 @@
 <section id="features" class="features" aria-labelledby="features-title">
   <div class="wrap">
     <div class="reveal">
-      <p class="label">03 / Features</p>
+      <p class="label">05 / Features</p>
       <h2 id="features-title">Video, audio, images, PDF.<br>One toolbox.</h2>
     </div>
     <div class="grid">
@@ -158,7 +217,7 @@
   <div class="buy-scrim" aria-hidden="true"></div>
   <div class="wrap">
     <div class="card reveal">
-      <p class="label">04 / Pricing</p>
+      <p class="label">06 / Pricing</p>
       <h2 id="buy-title" class="sr-only">Pricing</h2>
       <div class="price"><span>US$</span>8.99</div>
       <p class="price-note">Pay once, use forever. No subscription, no monthly fee.</p>
@@ -171,6 +230,17 @@
       </ul>
       <div class="cta"><a class="btn big" id="buy-btn" href="https://github.com/mcxen/AvaRelease/issues/new/choose" data-buy>On sale soon · leave a note</a></div>
       <p class="fine">Until checkout opens, leave a note in the feedback area and we will tell you when it goes live.</p>
+
+      <div class="downloads" id="download">
+        <p class="dl-title">Try it free for 7 days, then decide</p>
+        <div class="dl-grid">
+          <a class="dl" data-asset="setup" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>Windows installer</b><span>x64 · setup.exe</span></a>
+          <a class="dl" data-asset="portable" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>Windows portable</b><span>x64 · ZIP</span></a>
+          <a class="dl" data-asset="dmg" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>macOS</b><span>Apple Silicon · DMG</span></a>
+          <a class="dl" data-asset="linux" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>Linux</b><span>x64 · tar.gz</span></a>
+        </div>
+        <p class="fine"><span id="dl-version">Latest release</span> · <a id="dl-mirror" href="https://github.com/mcxen/AvaRelease/releases/latest">Mirror links are on the release page</a></p>
+      </div>
     </div>
   </div>
   <p class="credit">PHOTO · USGS / Kīlauea, 2018 · PUBLIC DOMAIN</p>
@@ -178,7 +248,7 @@
 
 <section id="feedback" class="feedback wrap" aria-labelledby="feedback-title">
   <div class="reveal">
-    <p class="label">05 / Feedback</p>
+    <p class="label">07 / Feedback</p>
     <h2 id="feedback-title">Bugs, ideas, feature requests.<br>Send them here.</h2>
     <p class="lead">We collect feedback and publish every release in a public repository.</p>
   </div>
@@ -198,5 +268,6 @@
 </footer>
 
 <script src="../site.js"></script>
+<script src="../visuals.js"></script>
 </body>
 </html>

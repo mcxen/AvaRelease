@@ -30,9 +30,12 @@
     <span>AvaMedia</span>
   </a>
   <nav aria-label="主导航">
+    <a href="#platforms">全平台</a>
+    <a href="#demos">演示</a>
     <a href="#stages">多任务步骤</a>
     <a href="#skins">多主题</a>
     <a href="#features">功能</a>
+    <a href="#download">下载</a>
     <a href="#buy">定价</a>
     <a href="#feedback">反馈</a>
   </nav>
@@ -46,14 +49,15 @@
   <div class="hero-scrim"></div>
   <p class="hero-coord" aria-hidden="true">19.41°N 155.28°W<br>HALEMA‘UMA‘U CRATER</p>
   <div class="hero-content">
-    <p class="kicker">AVAMEDIA — 天池万象转换 / 本地媒体工具箱</p>
+    <p class="kicker">AVAMEDIA — WINDOWS · MACOS · LINUX · WEB</p>
     <h1 id="hero-title">一次输入，<br><em>万般输出。</em></h1>
-    <p class="hero-sub">视频、音频、图片、PDF 在同一个工具箱里处理。每个耗时任务都拆成看得见的步骤，可以暂停，也能从任意一步重试。界面提供浅色、深色、Mac OS 9 和 Windows XP 四套皮肤。</p>
+    <p class="hero-sub">视频、音频、图片、PDF 在同一个工具箱里处理。Windows、macOS、Linux 都能用，还能在浏览器里遥控。每个耗时任务都拆成看得见的步骤，可以暂停，也能从任意一步重试。</p>
+    <div class="plat-chips mono" aria-label="platforms"><span>Windows x64</span><span>macOS Apple Silicon</span><span>Linux x64</span><span>浏览器遥控</span><span>MCP</span></div>
     <div class="cta">
       <a class="btn" href="#buy" data-buy>一次买断 US$8.99</a>
       <a class="btn ghost" href="#stages">查看多任务界面</a>
     </div>
-    <p class="fine">Windows x64 · macOS Apple Silicon · 永久使用，无订阅 · 文件在本机处理</p>
+    <p class="fine">Windows x64 · macOS Apple Silicon · Linux x64 · 永久使用，无订阅 · 文件在本机处理</p>
   </div>
   <p class="credit">PHOTO · USGS / Kīlauea, 2018 · PUBLIC DOMAIN</p>
 </section>
@@ -65,12 +69,67 @@
   <div role="listitem"><b>4</b><span>套皮肤，含 Mac OS 9 与 XP</span></div>
 </div>
 
+<section id="platforms" class="platforms wrap" aria-labelledby="plat-title">
+  <div class="plat-head reveal">
+    <p class="label">01 / 全平台</p>
+    <h2 id="plat-title">Windows、macOS、Linux，<br>外加浏览器和 AI 助手。</h2>
+    <p class="lead">同一套工具箱跑在三个桌面系统上。网页界面随应用打包，可以在手机或另一台电脑上遥控任务；MCP 让 AI 助手直接调用转换、剪辑和整理。</p>
+  </div>
+  <div class="plat-grid">
+    <div class="ascii-stage reveal"><canvas id="ascii-volcano" aria-hidden="true"></canvas></div>
+    <ul class="plat-list"><li class="reveal"><pre class="logo" aria-hidden="true"><span class="c1">,----.</span><span class="c2">,----.</span>
+<span class="c1">|    |</span><span class="c2">|    |</span>
+<span class="c1">'----'</span><span class="c2">'----'</span>
+<span class="c3">,----.</span><span class="c4">,----.</span>
+<span class="c3">|    |</span><span class="c4">|    |</span>
+<span class="c3">'----'</span><span class="c4">'----'</span></pre><div><b>Windows</b><span>x64 · 安装版与便携版 ZIP</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true"> .---------.
+ | ^     ^ |
+ |  \___/  |
+ '---------'
+  /_______\
+ /_________\</pre><div><b>macOS</b><span>Apple Silicon · DMG · macOS 13.4+</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true">   .--.
+  |o_o |
+  |:_/ |
+ //   \ \
+(|     | )
+/'\_ _/`\</pre><div><b>Linux</b><span>x64 · 自包含 tar.gz，需自备 FFmpeg</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true"> .------------.
+ |o o o  http |
+ |------------|
+ | [==] [==]  |
+ | [==] [==]  |
+ '------------'</pre><div><b>浏览器遥控</b><span>网页随应用打包，共用同一个任务队列</span></div></li><li class="reveal"><pre class="logo" aria-hidden="true"> .------------.
+ | $ mcp list |
+ | > convert  |
+ | > clip     |
+ | > summary_ |
+ '------------'</pre><div><b>MCP</b><span>给 AI 助手调用的工具列表</span></div></li></ul>
+  </div>
+  <p class="fine">文件始终在运行 AvaMedia 的电脑上处理，网页和 MCP 不上传本地文件。Linux 版尚未做完整的桌面功能验收。</p>
+</section>
+
+<section id="demos" class="demos wrap" aria-labelledby="demos-title">
+  <div class="reveal">
+    <p class="label">02 / 功能演示</p>
+    <h2 id="demos-title">看它怎么干活。</h2>
+    <p class="lead">下面是六个常用功能的操作过程。示意动画按软件实际步骤制作，数字为示例。</p>
+  </div>
+  <div class="tabs" role="tablist" aria-label="功能演示" id="demo-tabs"></div>
+  <div class="demo-grid">
+    <div class="demo-info" id="demo-info" aria-live="polite"></div>
+    <div class="win demo-stage">
+      <div class="titlebar"><i></i><i></i><i></i><span id="demo-title"></span></div>
+      <div class="demo-scene" id="demo-scene" role="tabpanel" aria-label="功能演示"></div>
+    </div>
+  </div>
+  <p class="fine">示意动画，数字为示例；实际速度取决于文件和电脑。</p>
+</section>
+
 <section id="stages" class="stages" aria-labelledby="stages-title">
   <div class="stages-photo" aria-hidden="true"></div>
   <div class="stages-scrim" aria-hidden="true"></div>
   <div class="wrap stages-grid">
     <div class="reveal">
-      <p class="label">01 / 多任务步骤界面</p>
+      <p class="label">03 / 多任务步骤界面</p>
       <h2 id="stages-title">每个任务，<br>都有看得见的步骤。</h2>
       <p class="lead">保留有人片段、自动字幕、视频总结、批量旋转、自动标签分类与媒体整理，都使用同一套多阶段任务窗口。</p>
       <ul class="ticks">
@@ -113,7 +172,7 @@
 <section id="skins" class="skins wrap" aria-labelledby="skins-title">
   <div class="skins-head reveal">
     <div>
-      <p class="label">02 / 多主题 · 给复古爱好者</p>
+      <p class="label">04 / 多主题 · 给复古爱好者</p>
       <h2 id="skins-title">一个工具，四个年代。</h2>
     </div>
     <p class="lead">Mac OS 9 Platinum 与 Windows XP Luna 各有完整的窗口、按钮、标题栏和像素字体。切换皮肤立即生效，功能保持一致。</p>
@@ -134,7 +193,7 @@
 <section id="features" class="features" aria-labelledby="features-title">
   <div class="wrap">
     <div class="reveal">
-      <p class="label">03 / 功能</p>
+      <p class="label">05 / 功能</p>
       <h2 id="features-title">视频、音频、图片、PDF，一个工具箱。</h2>
     </div>
     <div class="grid">
@@ -157,7 +216,7 @@
   <div class="buy-scrim" aria-hidden="true"></div>
   <div class="wrap">
     <div class="card reveal">
-      <p class="label">04 / 定价</p>
+      <p class="label">06 / 定价</p>
       <h2 id="buy-title" class="sr-only">定价</h2>
       <div class="price"><span>US$</span>8.99</div>
       <p class="price-note">一次买断，永久使用。没有订阅，没有按月续费。</p>
@@ -170,6 +229,17 @@
       </ul>
       <div class="cta"><a class="btn big" id="buy-btn" href="https://github.com/mcxen/AvaRelease/issues/new/choose" data-buy>即将开售 · 点此留言告诉我们</a></div>
       <p class="fine">购买入口开通前，可在反馈区留言，上线时第一时间通知你。</p>
+
+      <div class="downloads" id="download">
+        <p class="dl-title">先试用 7 天，再决定是否购买</p>
+        <div class="dl-grid">
+          <a class="dl" data-asset="setup" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>Windows 安装版</b><span>x64 · setup.exe</span></a>
+          <a class="dl" data-asset="portable" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>Windows 便携版</b><span>x64 · ZIP</span></a>
+          <a class="dl" data-asset="dmg" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>macOS</b><span>Apple Silicon · DMG</span></a>
+          <a class="dl" data-asset="linux" href="https://github.com/mcxen/AvaRelease/releases/latest"><b>Linux</b><span>x64 · tar.gz</span></a>
+        </div>
+        <p class="fine"><span id="dl-version">最新版本</span> · <a id="dl-mirror" href="https://github.com/mcxen/AvaRelease/releases/latest">国内加速下载见发布页</a></p>
+      </div>
     </div>
   </div>
   <p class="credit">PHOTO · USGS / Kīlauea, 2018 · PUBLIC DOMAIN</p>
@@ -177,7 +247,7 @@
 
 <section id="feedback" class="feedback wrap" aria-labelledby="feedback-title">
   <div class="reveal">
-    <p class="label">05 / 反馈</p>
+    <p class="label">07 / 反馈</p>
     <h2 id="feedback-title">问题、建议、想要的功能，<br>都放在这里。</h2>
     <p class="lead">我们用公开的发布仓库收集反馈，也在这里发布每个新版本。</p>
   </div>
@@ -197,5 +267,6 @@
 </footer>
 
 <script src="site.js"></script>
+<script src="visuals.js"></script>
 </body>
 </html>
