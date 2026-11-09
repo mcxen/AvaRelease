@@ -3,163 +3,193 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
 <title>天池万象转换 · AvaMedia — 多任务步骤界面、多主题的本地媒体工具箱</title>
 <meta name="description" content="视频、音频、图片、PDF 一站处理。每个任务都是可暂停、可重试的多阶段窗口；浅色、深色、Mac OS 9、Windows XP 四套皮肤，为复古爱好者准备。一次买断 US$8.99。">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23007aff'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='white'/%3E%3C/svg%3E">
+<meta property="og:title" content="天池万象转换 · AvaMedia">
+<meta property="og:description" content="多任务步骤界面、四套复古皮肤的本地媒体工具箱。一次买断 US$8.99。">
+<meta property="og:image" content="media/volcano-crater.jpg">
+<link rel="icon" type="image/png" href="media/app-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Fragment+Mono&family=Noto+Sans+SC:wght@300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<header class="nav">
-  <a class="brand" href="#top"><span class="logo">▶</span> 天池万象转换 <small>AvaMedia</small></a>
-  <nav>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="天池万象转换 AvaMedia">
+    <img src="media/app-128.png" width="40" height="40" alt="">
+    <span>AvaMedia</span>
+  </a>
+  <nav aria-label="主导航">
     <a href="#stages">多任务步骤</a>
     <a href="#skins">多主题</a>
     <a href="#features">功能</a>
-    <a href="#buy">购买</a>
+    <a href="#buy">定价</a>
     <a href="#feedback">反馈</a>
   </nav>
   <a class="btn small" href="#buy" data-buy>US$8.99 买断</a>
 </header>
 
 <main id="top">
-<section class="hero">
-  <p class="eyebrow">本地运行 · 不上传你的文件</p>
-  <h1>每个任务，都是一个<br><em>看得见步骤</em>的窗口。</h1>
-  <p class="lead">转换、剪辑、字幕、标签、整理——耗时的处理拆成清晰的阶段，随时暂停、从任意一步重试。再配上四套皮肤，从现代浅色一路回到 Mac OS 9 与 Windows XP。</p>
-  <div class="cta">
-    <a class="btn" href="#buy" data-buy>一次买断 US$8.99</a>
-    <a class="btn ghost" href="#stages">看看多任务界面</a>
-  </div>
-  <p class="fine">Windows x64 · macOS Apple Silicon · 永久使用，无订阅</p>
 
-  <div class="stage-shot" aria-hidden="true">
-    <div class="win modern">
-      <div class="titlebar"><i></i><i></i><i></i><span>视频总结 · 旅行记录.mp4</span></div>
-      <div class="body">
-        <aside>
-          <b>处理阶段 <em>2 / 4</em></b>
-          <ol>
-            <li class="done"><span>✓</span>语音识别</li>
-            <li class="done"><span>✓</span>抽取画面</li>
-            <li class="run"><span class="spin"></span>逐段理解</li>
-            <li><span>4</span>成文报告</li>
-          </ol>
-        </aside>
-        <section>
-          <div class="progress"><div style="width:58%"></div></div>
-          <div class="cards"><div><b>03:12</b><small>已处理</small></div><div><b>11</b><small>分段</small></div><div><b>58%</b><small>整体进度</small></div></div>
-          <div class="band"><i class="d"></i><i class="d"></i><i class="d"></i><i class="r"></i><i></i><i></i></div>
-        </section>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-photo" role="img" aria-label="夏威夷基拉韦厄火山口内翻涌的熔岩湖，航拍"></div>
+  <div class="hero-scrim"></div>
+  <p class="hero-coord" aria-hidden="true">19.41°N 155.28°W<br>HALEMA‘UMA‘U CRATER</p>
+  <div class="hero-content">
+    <p class="kicker">AVAMEDIA — 天池万象转换 / 本地媒体工具箱</p>
+    <h1 id="hero-title">一次输入，<br><em>万般输出。</em></h1>
+    <p class="hero-sub">视频、音频、图片、PDF 在同一个工具箱里处理。每个耗时任务都拆成看得见的步骤，可以暂停，也能从任意一步重试。界面提供浅色、深色、Mac OS 9 和 Windows XP 四套皮肤。</p>
+    <div class="cta">
+      <a class="btn" href="#buy" data-buy>一次买断 US$8.99</a>
+      <a class="btn ghost" href="#stages">查看多任务界面</a>
+    </div>
+    <p class="fine">Windows x64 · macOS Apple Silicon · 永久使用，无订阅 · 文件在本机处理</p>
+  </div>
+  <p class="credit">PHOTO · USGS / Kīlauea, 2018 · PUBLIC DOMAIN</p>
+</section>
+
+<div class="facts" role="list">
+  <div role="listitem"><b>US$8.99</b><span>一次买断</span></div>
+  <div role="listitem"><b>3</b><span>台设备 / 每个激活码</span></div>
+  <div role="listitem"><b>7</b><span>天免费试用</span></div>
+  <div role="listitem"><b>4</b><span>套皮肤，含 Mac OS 9 与 XP</span></div>
+</div>
+
+<section id="stages" class="stages" aria-labelledby="stages-title">
+  <div class="stages-photo" aria-hidden="true"></div>
+  <div class="stages-scrim" aria-hidden="true"></div>
+  <div class="wrap stages-grid">
+    <div class="reveal">
+      <p class="label">01 / 多任务步骤界面</p>
+      <h2 id="stages-title">每个任务，<br>都有看得见的步骤。</h2>
+      <p class="lead">保留有人片段、自动字幕、视频总结、批量旋转、自动标签分类与媒体整理，都使用同一套多阶段任务窗口。</p>
+      <ul class="ticks">
+        <li><b>阶段一目了然</b>完成、进行中、失败、暂停各有明确标记，当前做到哪一步不用猜。</li>
+        <li><b>从某一步重试</b>失败后不必从头开始，已完成的阶段保留结果。</li>
+        <li><b>关窗不停任务</b>任务交给共享队列，窗口只是观察与操作的入口，之后可从任务列表重新进入。</li>
+        <li><b>多个任务并行</b>每个文件独立成任务，队列统一调度、通知与恢复。</li>
+      </ul>
+    </div>
+    <div class="reveal" aria-hidden="true">
+      <div class="win dark-win">
+        <div class="titlebar"><i></i><i></i><i></i><span>视频总结 · 旅行记录.mp4</span></div>
+        <div class="win-body">
+          <aside>
+            <b>处理阶段 <em>2 / 4</em></b>
+            <ol>
+              <li class="done"><span>✓</span>语音识别</li>
+              <li class="done"><span>✓</span>抽取画面</li>
+              <li class="run"><span class="spin"></span>逐段理解</li>
+              <li><span>4</span>成文报告</li>
+            </ol>
+          </aside>
+          <section>
+            <div class="progress"><div style="width:58%"></div></div>
+            <div class="stat-row"><div><b>03:12</b><small>已处理</small></div><div><b>11</b><small>分段</small></div><div><b>58%</b><small>整体进度</small></div></div>
+            <div class="frames"><i class="d"></i><i class="d"></i><i class="d"></i><i class="r"></i><i></i><i></i></div>
+          </section>
+        </div>
+      </div>
+      <div class="queue">
+        <div><b>自动字幕</b><span class="pill ok">已完成</span><div class="progress"><div style="width:100%"></div></div></div>
+        <div><b>保留有人片段</b><span class="pill run">进行中 · 检测</span><div class="progress"><div style="width:42%"></div></div></div>
+        <div><b>自动媒体整理</b><span class="pill wait">等待你操作</span><div class="progress"><div style="width:76%"></div></div></div>
+        <div><b>批量旋转</b><span class="pill pause">已暂停</span><div class="progress"><div style="width:30%"></div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="stages" class="band-section">
-  <div class="wrap two">
+<section id="skins" class="skins wrap" aria-labelledby="skins-title">
+  <div class="skins-head reveal">
     <div>
-      <p class="eyebrow">多任务步骤界面</p>
-      <h2>不是一个转圈的进度条。<br>是一条能读懂的流水线。</h2>
-      <p>保留有人片段、自动字幕、视频总结、批量旋转、自动标签分类与媒体整理，都使用同一个多阶段任务窗口：</p>
-      <ul class="ticks">
-        <li><b>阶段一目了然</b> 完成、进行中、失败、暂停各有明确标记，当前做到哪一步不用猜。</li>
-        <li><b>随时暂停，从某一步重试</b> 失败不用从头来，已完成的阶段保留结果。</li>
-        <li><b>关窗不停任务</b> 任务交给共享队列，窗口只是观察与操作的入口，之后可从任务列表重新进入。</li>
-        <li><b>边跑边看结果</b> 预览帧、时间轴、统计与结果列表随处理实时更新。</li>
-        <li><b>多个任务并行</b> 每个文件独立成任务，队列统一调度、通知与恢复。</li>
-      </ul>
+      <p class="label">02 / 多主题 · 给复古爱好者</p>
+      <h2 id="skins-title">一个工具，四个年代。</h2>
     </div>
-    <div class="stack" aria-hidden="true">
-      <div class="mini"><b>自动字幕</b><span class="pill ok">已完成</span><div class="progress"><div style="width:100%"></div></div></div>
-      <div class="mini"><b>保留有人片段</b><span class="pill run">进行中 · 检测</span><div class="progress"><div style="width:42%"></div></div></div>
-      <div class="mini"><b>自动媒体整理</b><span class="pill wait">等待你操作</span><div class="progress"><div style="width:76%"></div></div></div>
-      <div class="mini"><b>批量旋转</b><span class="pill pause">已暂停</span><div class="progress"><div style="width:30%"></div></div></div>
-    </div>
+    <p class="lead">Mac OS 9 Platinum 与 Windows XP Luna 各有完整的窗口、按钮、标题栏和像素字体。切换皮肤立即生效，功能保持一致。</p>
   </div>
+  <div class="tabs" role="tablist" aria-label="界面皮肤">
+    <button role="tab" id="tab-dark" aria-selected="true" aria-controls="skin-panel" data-skin="dark" data-era="2020s" data-cap="深色皮肤：深灰底色与蓝色强调，适合夜间长时间使用。">深色</button>
+    <button role="tab" id="tab-light" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="light" data-era="2010s" data-cap="浅色皮肤：明亮干净的现代界面。">浅色</button>
+    <button role="tab" id="tab-macos9" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="macos9" data-era="1999" data-cap="Mac OS 9 Platinum：条纹标题栏、方角按钮与像素字体。">Mac OS 9</button>
+    <button role="tab" id="tab-winxp" aria-selected="false" aria-controls="skin-panel" tabindex="-1" data-skin="winxp" data-era="2001" data-cap="Windows XP Luna：蓝色标题栏与圆角按钮。">Windows XP</button>
+  </div>
+  <div class="shot reveal" id="skin-panel" role="tabpanel" aria-labelledby="tab-dark" tabindex="0">
+    <span class="era" id="skin-era">2020s</span>
+    <img id="skin-img" src="media/main-dark.png" width="1440" height="836" alt="天池万象转换深色皮肤主窗口" loading="lazy">
+  </div>
+  <p class="caption" id="skin-cap" aria-live="polite">深色皮肤：深灰底色与蓝色强调，适合夜间长时间使用。</p>
 </section>
 
-<section id="skins" class="wrap">
-  <p class="eyebrow center">多主题 · 给复古爱好者</p>
-  <h2 class="center">一个工具，四种年代。</h2>
-  <p class="center sub">不是换个颜色：Mac OS 9 Platinum 与 Windows XP Luna 是完整的窗口、按钮、标题栏和像素字体。切换皮肤即时生效，功能完全一致。</p>
-  <div class="skins" aria-hidden="true">
-    <figure>
-      <div class="win modern light"><div class="titlebar"><i></i><i></i><i></i><span>天池万象转换</span></div><div class="body"><aside><u></u><u></u><u></u><u></u></aside><section><div class="progress"><div style="width:64%"></div></div><div class="rows"><s></s><s></s><s></s></div></section></div></div>
-      <figcaption>浅色 <small>macOS 风格</small></figcaption>
-    </figure>
-    <figure>
-      <div class="win modern dark"><div class="titlebar"><i></i><i></i><i></i><span>天池万象转换</span></div><div class="body"><aside><u></u><u></u><u></u><u></u></aside><section><div class="progress"><div style="width:64%"></div></div><div class="rows"><s></s><s></s><s></s></div></section></div></div>
-      <figcaption>深色 <small>跟随系统或手动</small></figcaption>
-    </figure>
-    <figure>
-      <div class="win os9"><div class="titlebar"><b class="box"></b><span>天池万象转换</span><b class="box"></b></div><div class="body"><aside><u></u><u></u><u></u><u></u></aside><section><div class="progress"><div style="width:64%"></div></div><div class="rows"><s></s><s></s><s></s></div></section></div></div>
-      <figcaption>Mac OS 9 <small>Platinum · 像素字体</small></figcaption>
-    </figure>
-    <figure>
-      <div class="win xp"><div class="titlebar"><span>天池万象转换</span><b class="x"></b></div><div class="body"><aside><u></u><u></u><u></u><u></u></aside><section><div class="progress"><div style="width:64%"></div></div><div class="rows"><s></s><s></s><s></s></div></section></div></div>
-      <figcaption>Windows XP <small>Luna 蓝</small></figcaption>
-    </figure>
-  </div>
-  <p class="fine center">页面上的窗口为示意图；实际界面以软件为准。</p>
-</section>
-
-<section id="features" class="band-section">
+<section id="features" class="features" aria-labelledby="features-title">
   <div class="wrap">
-    <p class="eyebrow center">功能</p>
-    <h2 class="center">视频、音频、图片、PDF，一个工具箱。</h2>
+    <div class="reveal">
+      <p class="label">03 / 功能</p>
+      <h2 id="features-title">视频、音频、图片、PDF，一个工具箱。</h2>
+    </div>
     <div class="grid">
-      <article><h3>格式转换与压缩</h3><p>视频、音频、图片互转；按质量、码率或目标体积压缩；分析画面后瘦身；合并、混流、提取轨道、修复重新封装。</p></article>
-      <article><h3>快速剪辑</h3><p>多片段剪辑、裁剪、旋转、镜像、速度、淡入淡出与去水印；可原格式快速复制导出。</p></article>
-      <article><h3>离线自动字幕</h3><p>本地语音识别，人工校对后导出字幕文件或烧录进视频；可单独做人声增强。</p></article>
-      <article><h3>视频总结</h3><p>本地或线上模型分段理解画面与语音，生成带章节的报告；线上请求会明确提示。</p></article>
-      <article><h3>自动标签与媒体整理</h3><p>给图片和视频打中文标签，按标签、语义、人物、时长等分组，复制或移动并可撤销。</p></article>
-      <article><h3>保留有人片段 · Beta</h3><p>检测人物出现的区间，复核后按原格式或重新编码导出。</p></article>
-      <article><h3>天池播放器与看图</h3><p>播放列表、选轨、字幕、VR 视频；看图支持 HEIC，并能直接浏览压缩包里的图片。</p></article>
-      <article><h3>PDF 工作区</h3><p>可视化选页、排序、旋转、合并拆分，文字提取，图片或 TXT 转 PDF，压缩与做旧。</p></article>
-      <article><h3>下载、传输与批量工具</h3><p>视频下载、局域网 WiFi 传文件、批量重命名与多宫格截图、DVD / VOB 与光盘转 ISO。</p></article>
+      <article class="reveal"><span>01</span><h3>格式转换与压缩</h3><p>视频、音频、图片互转；按质量、码率或目标体积压缩；分析画面后瘦身；合并、混流、提取轨道、修复重新封装。</p></article>
+      <article class="reveal"><span>02</span><h3>快速剪辑</h3><p>多片段剪辑、裁剪、旋转、镜像、速度、淡入淡出与去水印；可按原格式快速复制导出。</p></article>
+      <article class="reveal"><span>03</span><h3>离线自动字幕</h3><p>本地语音识别，人工校对后导出字幕文件或烧录进视频；可单独做人声增强。</p></article>
+      <article class="reveal"><span>04</span><h3>视频总结</h3><p>本地或线上模型分段理解画面与语音，生成带章节的报告；线上请求会明确提示。</p></article>
+      <article class="reveal"><span>05</span><h3>自动标签与媒体整理</h3><p>给图片和视频打中文标签，按标签、语义、人物、时长等分组，复制或移动并可撤销。</p></article>
+      <article class="reveal"><span>06</span><h3>保留有人片段 · Beta</h3><p>检测人物出现的区间，复核后按原格式或重新编码导出。</p></article>
+      <article class="reveal"><span>07</span><h3>天池播放器与看图</h3><p>播放列表、选轨、字幕、VR 视频；看图支持 HEIC，并能直接浏览压缩包里的图片。</p></article>
+      <article class="reveal"><span>08</span><h3>PDF 工作区</h3><p>可视化选页、排序、旋转、合并拆分，文字提取，图片或 TXT 转 PDF，压缩与做旧。</p></article>
+      <article class="reveal"><span>09</span><h3>下载、传输与批量工具</h3><p>视频下载、局域网 WiFi 传文件、批量重命名与多宫格截图、DVD / VOB 与光盘转 ISO。</p></article>
     </div>
-    <p class="fine center">部分 AI 功能需要按需安装本地模型；识别与分类结果不保证完全准确。完整说明见软件内帮助。</p>
+    <p class="fine">部分 AI 功能需要按需安装本地模型；识别与分类结果不保证完全准确。完整说明见软件内帮助。</p>
   </div>
 </section>
 
-<section id="buy" class="wrap buy">
-  <div class="card">
-    <p class="eyebrow center">一次买断</p>
-    <div class="price"><span>US$</span>8.99</div>
-    <p class="center sub">一次付款，永久使用。没有订阅，没有按月续费。</p>
-    <ul class="ticks narrow">
-      <li>全部工具，包括多任务步骤界面</li>
-      <li>浅色、深色、Mac OS 9、Windows XP 四套皮肤</li>
-      <li>Windows x64 与 macOS Apple Silicon 安装包</li>
-      <li>文件在本机处理，不会被上传</li>
-      <li>7 天免费试用；一个激活码最多可用于 3 台设备，也支持离线激活</li>
-    </ul>
-    <div class="cta center"><a class="btn big" id="buy-btn" href="https://github.com/mcxen/AvaRelease/issues/new/choose" data-buy>即将开售 · 点此留言告诉我们</a></div>
-    <p class="fine center">购买入口开通前，可在反馈区留言，上线时第一时间通知你。</p>
+<section id="buy" class="buy" aria-labelledby="buy-title">
+  <div class="buy-photo" aria-hidden="true"></div>
+  <div class="buy-scrim" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="card reveal">
+      <p class="label">04 / 定价</p>
+      <h2 id="buy-title" class="sr-only">定价</h2>
+      <div class="price"><span>US$</span>8.99</div>
+      <p class="price-note">一次买断，永久使用。没有订阅，没有按月续费。</p>
+      <ul class="ticks narrow">
+        <li>全部工具，包括多任务步骤界面</li>
+        <li>浅色、深色、Mac OS 9、Windows XP 四套皮肤</li>
+        <li>Windows x64 与 macOS Apple Silicon 安装包</li>
+        <li>文件在本机处理，不会被上传</li>
+        <li>7 天免费试用；一个激活码最多用于 3 台设备，也支持离线激活</li>
+      </ul>
+      <div class="cta"><a class="btn big" id="buy-btn" href="https://github.com/mcxen/AvaRelease/issues/new/choose" data-buy>即将开售 · 点此留言告诉我们</a></div>
+      <p class="fine">购买入口开通前，可在反馈区留言，上线时第一时间通知你。</p>
+    </div>
+  </div>
+  <p class="credit">PHOTO · USGS / Kīlauea, 2018 · PUBLIC DOMAIN</p>
+</section>
+
+<section id="feedback" class="feedback wrap" aria-labelledby="feedback-title">
+  <div class="reveal">
+    <p class="label">05 / 反馈</p>
+    <h2 id="feedback-title">问题、建议、想要的功能，<br>都放在这里。</h2>
+    <p class="lead">我们用公开的发布仓库收集反馈，也在这里发布每个新版本。</p>
+  </div>
+  <div class="links reveal">
+    <a href="https://github.com/mcxen/AvaRelease/issues/new?template=bug_report.yml"><b>报告 Bug</b><span>告诉我们哪里不对</span></a>
+    <a href="https://github.com/mcxen/AvaRelease/issues/new?template=feature_request.yml"><b>功能建议</b><span>你希望它还能做什么</span></a>
+    <a href="https://github.com/mcxen/AvaRelease/releases"><b>版本发布</b><span>下载与更新说明</span></a>
   </div>
 </section>
 
-<section id="feedback" class="band-section">
-  <div class="wrap two">
-    <div>
-      <p class="eyebrow">反馈</p>
-      <h2>问题、建议、想要的功能，<br>都放在这里。</h2>
-      <p>我们用公开的发布仓库收集反馈，也在这里发布每个新版本。</p>
-    </div>
-    <div class="links">
-      <a href="https://github.com/mcxen/AvaRelease/issues/new?template=bug_report.yml"><b>报告 Bug</b><span>告诉我们哪里不对</span></a>
-      <a href="https://github.com/mcxen/AvaRelease/issues/new?template=feature_request.yml"><b>功能建议</b><span>你希望它还能做什么</span></a>
-      <a href="https://github.com/mcxen/AvaRelease/releases"><b>版本发布</b><span>下载与更新说明</span></a>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer>
   <p>© 2026 AvaMedia · 天池万象转换</p>
   <p class="fine"><a href="https://github.com/mcxen/AvaRelease/blob/main/EULA.md">软件许可协议</a> · <a href="https://github.com/mcxen/AvaRelease/blob/main/THIRD-PARTY-NOTICES.md">第三方组件声明</a></p>
-  <p class="fine">FormatFactory 名称及原产品资源归各权利人所有；本软件为独立实现。FFmpeg 等第三方组件按各自许可证提供。</p>
+  <p class="fine">页面航拍照片由美国地质调查局（USGS）拍摄，属公有领域。FormatFactory 名称及原产品资源归各权利人所有；本软件为独立实现。FFmpeg 等第三方组件按各自许可证提供。</p>
 </footer>
+
 <script src="site.js"></script>
 </body>
 </html>

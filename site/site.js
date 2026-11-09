@@ -5,3 +5,52 @@ if (BUY_URL) {
   const main = document.getElementById("buy-btn");
   if (main) main.textContent = "立即购买 · US$8.99";
 }
+
+// Nav gets a solid background once the page scrolls past the top.
+const nav = document.getElementById("nav");
+const onScroll = () => nav.classList.toggle("solid", window.scrollY > 40);
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
+
+// Skin tabs: swap the real screenshot, era label and caption.
+const tabs = [...document.querySelectorAll(".tabs [role=tab]")];
+const panel = document.getElementById("skin-panel");
+const image = document.getElementById("skin-img");
+const era = document.getElementById("skin-era");
+const caption = document.getElementById("skin-cap");
+function selectSkin(tab, focus) {
+  tabs.forEach((t) => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", String(on));
+    t.tabIndex = on ? 0 : -1;
+  });
+  image.src = `media/main-${tab.dataset.skin}.png`;
+  image.alt = `天池万象转换${tab.textContent}皮肤主窗口`;
+  era.textContent = tab.dataset.era;
+  caption.textContent = tab.dataset.cap;
+  panel.setAttribute("aria-labelledby", tab.id);
+  if (focus) tab.focus();
+}
+tabs.forEach((tab, i) => {
+  tab.addEventListener("click", () => selectSkin(tab));
+  tab.addEventListener("keydown", (e) => {
+    const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (step) {
+      e.preventDefault();
+      selectSkin(tabs[(i + step + tabs.length) % tabs.length], true);
+    }
+  });
+});
+
+// Reveal-on-scroll; without IntersectionObserver everything stays visible.
+const items = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  items.forEach((el) => io.observe(el));
+} else {
+  items.forEach((el) => el.classList.add("in"));
+}
